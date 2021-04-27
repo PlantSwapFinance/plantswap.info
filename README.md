@@ -1,6 +1,6 @@
-# Pancake History
+# PlantSwap History
 
-Check it out live: [https://pancakeswap.info/](https://pancakeswap.info/).
+Check it out live: [https://plantswap.info/](https://plantswap.info/).
 
 ### To Start Development
 
