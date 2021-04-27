@@ -3,7 +3,7 @@ import { FACTORY_ADDRESS, BUNDLE_ID } from '../constants'
 
 export const SUBGRAPH_HEALTH = gql`
   query health {
-    indexingStatusForCurrentVersion(subgraphName: "pancakeswap/exchange") {
+    indexingStatusForCurrentVersion(subgraphName: "plantswapfinance/exchange") {
       synced
       health
       chains {
@@ -472,7 +472,7 @@ export const PAIR_SEARCH = gql`
 export const ALL_PAIRS = (block) => {
   return gql(`
   query pairs($skip: Int!) {
-    pairs(first: 100, skip: $skip, orderBy: trackedReserveETH, orderDirection: desc, where: { createdAtBlockNumber_gte: ${block} }) {
+    pairs(first: 100, skip: $skip, orderBy: trackedReserveETH, orderDirection: desc, where: { createdAtBlockNumber_gte: 5619965 }) {
       id
       token0 {
         id
@@ -523,7 +523,7 @@ const PairFields = `
 
 export const PAIRS_CURRENT = gql`
   query pairs {
-    pairs(first: 100, where: { createdAtBlockNumber_gte : 5188030},  orderBy: trackedReserveETH, orderDirection: desc) {
+    pairs(first: 100, where: { createdAtBlockNumber_gte : 5619965 },  orderBy: trackedReserveETH, orderDirection: desc) {
       id
     }
   }

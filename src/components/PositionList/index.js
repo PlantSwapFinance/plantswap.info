@@ -45,7 +45,7 @@ const DashGrid = styled.div`
   display: grid;
   grid-gap: 1em;
   grid-template-columns: 5px 0.5fr 1fr 1fr;
-  grid-template-areas: 'number name plantswap return';
+  grid-template-areas: 'number name pancakeswap return';
   align-items: flex-start;
   padding: 20px 0;
 
@@ -62,17 +62,17 @@ const DashGrid = styled.div`
 
   @media screen and (min-width: 1200px) {
     grid-template-columns: 35px 2.5fr 1fr 1fr;
-    grid-template-areas: 'number name plantswap return';
+    grid-template-areas: 'number name pancakeswap return';
   }
 
   @media screen and (max-width: 740px) {
     grid-template-columns: 2.5fr 1fr 1fr;
-    grid-template-areas: 'name plantswap return';
+    grid-template-areas: 'name pancakeswap return';
   }
 
   @media screen and (max-width: 500px) {
     grid-template-columns: 2.5fr 1fr;
-    grid-template-areas: 'name plantswap';
+    grid-template-areas: 'name pancakeswap';
   }
 `
 
@@ -104,7 +104,7 @@ const DataText = styled(Flex)`
 
 const SORT_FIELD = {
   VALUE: 'VALUE',
-  plantswap_RETURN: 'plantswap_RETURN',
+  pancakeswap_RETURN: 'pancakeswap_RETURN',
 }
 
 function PositionList({ positions }) {
@@ -174,7 +174,7 @@ function PositionList({ positions }) {
             </RowFixed>
           </AutoColumn>
         </DataText>
-        <DataText area="plantswap">
+        <DataText area="pancakeswap">
           <AutoColumn gap="12px" justify="flex-end">
             <TYPE.main>{formattedNum(valueUSD, true, true)}</TYPE.main>
             <AutoColumn gap="4px" justify="flex-end">
@@ -263,8 +263,8 @@ function PositionList({ positions }) {
         if (sortedColumn === SORT_FIELD.HODL) {
           return p0?.hodl?.sum > p1?.hodl?.sum ? (sortDirection ? -1 : 1) : sortDirection ? 1 : -1
         }
-        if (sortedColumn === SORT_FIELD.plantswap_RETURN) {
-          return p0?.plantswap?.return > p1?.plantswap?.return ? (sortDirection ? -1 : 1) : sortDirection ? 1 : -1
+        if (sortedColumn === SORT_FIELD.pancakeswap_RETURN) {
+          return p0?.pancakeswap?.return > p1?.pancakeswap?.return ? (sortDirection ? -1 : 1) : sortDirection ? 1 : -1
         }
         if (sortedColumn === SORT_FIELD.VALUE) {
           const bal0 = (p0.liquidityTokenBalance / p0.pair.totalSupply) * p0.pair.reserveUSD
@@ -296,7 +296,7 @@ function PositionList({ positions }) {
         </Flex>
         <Flex alignItems="center" justifyContent="flexEnd">
           <ClickableText
-            area="plantswap"
+            area="pancakeswap"
             onClick={(e) => {
               setSortedColumn(SORT_FIELD.VALUE)
               setSortDirection(sortedColumn !== SORT_FIELD.VALUE ? true : !sortDirection)
@@ -310,12 +310,12 @@ function PositionList({ positions }) {
             <ClickableText
               area="return"
               onClick={() => {
-                setSortedColumn(SORT_FIELD.plantswap_RETURN)
-                setSortDirection(sortedColumn !== SORT_FIELD.plantswap_RETURN ? true : !sortDirection)
+                setSortedColumn(SORT_FIELD.pancakeswap_RETURN)
+                setSortDirection(sortedColumn !== SORT_FIELD.pancakeswap_RETURN ? true : !sortDirection)
               }}
             >
               {below740 ? 'Fees' : 'Total Fees Earned'}{' '}
-              {sortedColumn === SORT_FIELD.plantswap_RETURN ? (!sortDirection ? '↑' : '↓') : ''}
+              {sortedColumn === SORT_FIELD.pancakeswap_RETURN ? (!sortDirection ? '↑' : '↓') : ''}
             </ClickableText>
           </Flex>
         )}
