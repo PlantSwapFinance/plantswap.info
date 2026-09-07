@@ -3,5 +3,4 @@
   publish = "build"
 
 [build.environment]
-  NODE_VERSION = "12.22.12"
-  YARN_VERSION = "1.22.22"
+  NODE_VERSION = "12"
