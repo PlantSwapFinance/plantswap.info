@@ -50,9 +50,10 @@ const GlobalChart = ({ display }) => {
           let item = currentData[key]
           if (item.date > utcStartTime) {
             return item
-          } else {
-            return
           }
+          // Return explicitly so the arrow-function satisfies
+          // ESLint's array-callback-return rule; the value is filtered out below.
+          return null
         })
         .filter((item) => {
           return !!item
